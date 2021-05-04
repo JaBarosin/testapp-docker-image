@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testapp
+  labels:
+    app: nginx-flask
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-flask
+  template:
+    metadata:
+      labels:
+        app: nginx-flask
+    spec:
+      containers:
+      - name: testapp
+        image: localhost:32000/testing/nginx-flask
+        ports:
+        - containerPort: 80
